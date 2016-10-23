@@ -1,0 +1,41 @@
+<span class="h2">Audios</span>
+<button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal"
+        data-target=".bs-example-modal-lg">
+    <span class="glyphicon glyphicon-plus"></span>
+</button>
+<br>
+{{message}}
+
+<div class="media" ng-repeat="audio in audios">
+    <div class="media-body">
+        <span class="h3 media-heading" style="color:#2b669a;">{{audio.title}} </span>
+        <button class="btn btn-danger btn-sm" style="float: right" ng-click="vm.toggleModal(audio)"
+                data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-minus"></span></button>
+        <br>
+        <span class="h6" style="color:#00AA00;" ng-repeat="tags in audio.tag">#{{tags + " "}}</span>
+        <p style="white-space: pre-wrap;" class="">{{audio.text}}</p>
+        <span class="h5" style="float: right">Category:<span style="color:dodgerblue;">{{audio.category.name}}</span></span>
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="form-group modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="form-group modal-body">
+                <span class="h4">Are you sure you want to delete an audio with title "{{vm.audio.title}}"?</span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="vm.deleteAudio()">Ok</button>
+                <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<add-audio></add-audio>

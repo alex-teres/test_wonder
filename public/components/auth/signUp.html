@@ -1,0 +1,57 @@
+<div class="container">
+<form class="form-horizontal" name="signUpForm" style="text-align:center;">
+    <label class="h1">Sign up</label>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="username" ng-model="username" placeholder="Input username..."
+                   required ng-blur='vm.checkValue(username);'>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" name="email" ng-model="email" placeholder="Input email..."
+                   required ng-blur='vm.checkValue(email);'>
+        </div>
+    </div>
+    <div class="form-group">
+        <label  class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" name="password" ng-model="password"
+                   placeholder="Input password..." required ng-blur='vm.checkValue(password);'>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="password" class="form-control" ng-model="_password" placeholder="Repeat password..." required>
+        </div>
+    </div>
+    <div class="alert alert-danger" ng-show="vm.error">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        {{vm.error}}
+    </div>
+    <div class="alert alert-success" ng-show="vm.message">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{vm.message}}
+    </div>
+    <div class="alert alert-danger" ng-show="password !== _password">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Passwords do not match.
+    </div>
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label>All fields are required</label>
+        </div>
+    </div>
+    <div class="form-group" style="margin-top:30px;" ng-show="!vm.error">
+        <div class="col-sm-offset-1 col-sm-11">
+            <button type="submit" class="btn btn-success btn-lg  btn-block"
+                    ng-click="vm.signUp(username, password, email);">Sign up
+            </button>
+        </div>
+    </div>
+</form>
+</div>
