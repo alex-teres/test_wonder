@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var app = express();
 var User = require('./app/model/user');
-var Audio = require('./app/model/Audio')(app);
+var Audio = require('./app/model/audio')(app);
 var users = require('./app/routes/user')(app);
 var crudRouter = require('./app/routes/crudRouter');
 var auth = require('./app/routes/auth.js');
@@ -37,6 +37,7 @@ app.get('/', function (req, res) {
 app.get('/api', function(req, res) {
 	res.status(200).json({message: 'Server running'});
 });
+
 app.use('/api/auth',auth);
 app.use('/api/users', users);
 

@@ -4,6 +4,7 @@ import audiosCtrl from "./audios.controller";
 import audiosTpl from "./audios.html";
 import addAudioCtrl from "./addAudio.controller";
 import addAudioTpl from "./addAudio.html";
+import "./audio.styl";
 
 
 const NAME = 'audios';
@@ -36,6 +37,22 @@ angular
 
     .directive('addAudio', addAudioDirective)
     .controller('addAudioCtrl', ['$scope', 'Audios', '$compile', addAudioCtrl])
+
+    .directive('music', function($sce) {
+  return {
+    restrict: 'A',
+    scope: { code:'=' },
+    replace: true,
+    template: '<audio ng-src="{{url}}" controls preload></audio>',
+    link: function (scope) {
+        scope.$watch('code', function (newVal, oldVal) {
+           if (newVal !== undefined) {
+               scope.url = $sce.trustAsResourceUrl("/api/uploads/music/" + newVal);
+           }
+        });
+    }
+  };
+})
 
     .config(function ($stateProvider) {
         $stateProvider

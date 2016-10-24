@@ -6,7 +6,7 @@ class AudiosCtrl{
         this.Audios = Audios;
 
         $scope.audios = [];
-        
+
         $scope.$on('UserAuth', () => {
             Audios
                 .all({owner: Auth.getUser()._id})
