@@ -1,23 +1,22 @@
 class AudiosCtrl{
 
-    constructor($scope, $rootScope,  Articles, User, Auth, $compile){
+    constructor($scope, $rootScope,  Audios, User, Auth, $compile){
         this.$rootScope = $rootScope;
         this.$scope = $scope;
-        this.Articles = Articles;        
+        this.Audios = Audios;
 
-        $scope.articles = [];
+        $scope.audios = [];
         
         $scope.$on('UserAuth', () => {
-            Articles
-                .all({owner: Auth.getUser()._id, populate:'category'})
+            Audios
+                .all({owner: Auth.getUser()._id})
                 .then(
                     (res) => {
                         if (res.data.length == 0) {
-                            $scope.message = "You don't have any articles. Try to add one by pressing this button -->";
-
+                            $scope.message = "You don't have any audios. Try to add one by pressing this button -->";
                         }
                         else {
-                            $scope.articles = res.data;
+                            $scope.audios = res.data;
                         }
                     },
                     (err) => {
@@ -26,30 +25,30 @@ class AudiosCtrl{
                 );
         });
         
-        $scope.$on('articles:add', (event, article) => {
-            $scope.articles.push(article);
+        $scope.$on('audios:add', (event, audio) => {
+            $scope.audios.push(audio);
             $scope.message = "";
         });
 
-        $scope.$on('articles:delete', (event, article) => {
+        $scope.$on('audios:delete', (event, audio) => {
 
-            let articles = $scope.articles;
+            let audios = $scope.audios;
 
-            for(let i = 0; i < articles.length; i++){
+            for(let i = 0; i < audios.length; i++){
 
-                if (articles[i]._id == article._id){
+                if (audios[i]._id == audio._id){
                     var j = i;
                 }
             }
-            $scope.articles.splice(j,1);
-            if ($scope.articles.length == 0){
-                $scope.message = "You don't have any articles. Try to add one by pressing this button -->";
+            $scope.audios.splice(j,1);
+            if ($scope.audios.length == 0){
+                $scope.message = "You don't have any audios. Try to add one by pressing this button -->";
             }
         });
     }
 
-    deleteArticle(){
-        this.Articles.delete(this.article).then(
+    deleteAudio(){
+        this.Audios.delete(this.audio).then(
             (res) => {
                 $('.modal').modal('hide');
                 
@@ -60,8 +59,8 @@ class AudiosCtrl{
     );
     }
 
-    toggleModal(article){
-        this.article = article;        
+    toggleModal(audio){
+        this.audio = audio;
         $('.bs-example-modal-sm').modal('show');
     }
 

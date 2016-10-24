@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var app = express();
 var User = require('./app/model/user');
+var Audio = require('./app/model/Audio')(app);
 var users = require('./app/routes/user')(app);
 var crudRouter = require('./app/routes/crudRouter');
 var auth = require('./app/routes/auth.js');
@@ -29,8 +30,6 @@ app.use(function (req, res, next) {
 
 app.listen(process.env.PORT || 8080);
 
-// require('./app/music')(app);
-
 app.get('/', function (req, res) {
 	res.json({ok:'ok'});
 });
@@ -40,8 +39,10 @@ app.get('/api', function(req, res) {
 });
 app.use('/api/auth',auth);
 app.use('/api/users', users);
+
 app.use('/api/users', crudRouter(User, {noAuth: ['get','post']}));
 app.use('/api/userGroups', crudRouter(userGroups, {noAuth: []}));
+app.use('/api/audios', crudRouter(Audio, {noAuth: []}));
 
 app.use('/api/uploads', express.static('uploads'));
 app.use('/api/json', express.static('json'));

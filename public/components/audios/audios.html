@@ -8,13 +8,12 @@
 
 <div class="media" ng-repeat="audio in audios">
     <div class="media-body">
-        <span class="h3 media-heading" style="color:#2b669a;">{{audio.title}} </span>
         <button class="btn btn-danger btn-sm" style="float: right" ng-click="vm.toggleModal(audio)"
                 data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-minus"></span></button>
         <br>
-        <span class="h6" style="color:#00AA00;" ng-repeat="tags in audio.tag">#{{tags + " "}}</span>
-        <p style="white-space: pre-wrap;" class="">{{audio.text}}</p>
-        <span class="h5" style="float: right">Category:<span style="color:dodgerblue;">{{audio.category.name}}</span></span>
+        <audio controls>
+            <source ng-src="{{vm.audio.link}}">
+        </audio>
     </div>
 </div>
 

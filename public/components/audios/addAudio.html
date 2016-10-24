@@ -3,16 +3,16 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="form-group modal-header">
-				<span class="modal-title h4">New article</span>
+				<span class="modal-title h4">New audio</span>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
 						aria-hidden="true">&times;</span></button>
 	</div>
 			<div class="form-group modal-body">
-				<input type="text" class="form-control" ng-model="vm.article.title" placeholder="Title" required>
+				<input type="text" class="form-control" ng-model="vm.audio.title" placeholder="Title" required>
 				<br><div id="select2-container"></div>
 				<br>
 				<textarea class="form-control"
-						  ng-model="vm.article.text" placeholder='Put some text' rows="3" required>
+						  ng-model="vm.audio.text" placeholder='Put some text' rows="3" required>
 				</textarea>
 				<br>
 				<div class="categories">
@@ -21,7 +21,7 @@
 
 			</div>
 			<div class="modal-footer">
-				<button class="btn btn-primary" type="submit" ng-click="vm.addArticle()">Public</button>
+				<button class="btn btn-primary" type="submit" ng-click="vm.addAudio()">Public</button>
 				<button class="btn btn-default" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
