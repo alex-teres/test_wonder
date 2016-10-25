@@ -36,7 +36,7 @@ angular
     .service('Audios', ['$http', '$q', '$state', '$rootScope', Audios])
 
     .directive('addAudio', addAudioDirective)
-    .controller('addAudioCtrl', ['$scope', 'Audios', '$compile', addAudioCtrl])
+    .controller('addAudioCtrl', ['$scope', 'Audios', '$compile','$element', addAudioCtrl])
 
     .directive('music', function($sce) {
   return {

@@ -12,6 +12,7 @@
                 data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-minus"></span></button>
         <br>
             <span class="h4">{{audio.artist}} - {{audio.title}}</span>
+            <br>
             <div music code="audio.link"></div>
     </div>
 </div>
@@ -25,7 +26,7 @@
                         aria-hidden="true">&times;</span></button>
             </div>
             <div class="form-group modal-body">
-                <span class="h4">Are you sure you want to delete {{vm.audio.artist}} - {{vm.audio.title}}?</span>
+                <span class="h4">Are you sure you want to delete {{vm.audio.artist}} - {{audio.title}}?</span>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-primary" ng-click="vm.deleteAudio()">Ok</button>

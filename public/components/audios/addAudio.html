@@ -9,16 +9,12 @@
 	</div>
 			<div class="form-group modal-body">
 				<input type="text" class="form-control" ng-model="vm.audio.title" placeholder="Title" required>
-				<br><div id="select2-container"></div>
 				<br>
-				<textarea class="form-control"
-						  ng-model="vm.audio.text" placeholder='Put some text' rows="3" required>
-				</textarea>
+				<input type="text" class="form-control" ng-model="vm.audio.artist" placeholder="Artist" required>
 				<br>
-				<div class="categories">
-					<categories family="categories"></categories>
-				</div>
-
+				    <span class="btn btn-primary btn-file">
+				    <input type="file" accept="audio/*" style="width:300px;">
+				    </span>
 			</div>
 			<div class="modal-footer">
 				<button class="btn btn-primary" type="submit" ng-click="vm.addAudio()">Public</button>

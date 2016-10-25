@@ -10,6 +10,9 @@ var auth = require('./app/routes/auth.js');
 var conf = require('./config');
 require('./app/auth/jwt.strategy')(app);
 var userGroups = require('./app/model/userGroups');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+var fs = require('fs');
 
 var mongoose = require('mongoose');
 mongoose.connect(conf.dataBase);
@@ -47,3 +50,11 @@ app.use('/api/audios', crudRouter(Audio, {noAuth: []}));
 
 app.use('/api/uploads', express.static('uploads'));
 app.use('/api/json', express.static('json'));
+
+
+app.post('/api/upload',multipartMiddleware, function(req, resp) {
+    console.log(req.body, req.files.file);
+
+    fs.createReadStream(req.files.file.path).pipe(fs.createWriteStream(__dirname+'/uploads/music/'+req.files.file.name));
+    resp.json({status: 'ok'});
+});
