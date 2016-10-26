@@ -29,15 +29,10 @@ angular
         }
     })
     .config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/login');
+        $urlRouterProvider.otherwise('/home');
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
     })
-    .run(['$state', function ($state) {
-        if (!localStorage.getItem('Authorization')) {
-            $state.go('login');
-        }
-    }])
     .service('userInterceptor', function () {
         var service = this;
 

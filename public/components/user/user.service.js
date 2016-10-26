@@ -14,7 +14,6 @@ class User extends CrudService {
             function (x) {
                 deferred.reject(x);
             });
-
         return deferred.promise;
     }
 

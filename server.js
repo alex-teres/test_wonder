@@ -46,7 +46,7 @@ app.use('/api/users', users);
 
 app.use('/api/users', crudRouter(User, {noAuth: ['get','post']}));
 app.use('/api/userGroups', crudRouter(userGroups, {noAuth: []}));
-app.use('/api/audios', crudRouter(Audio, {noAuth: []}));
+app.use('/api/audios', crudRouter(Audio, {noAuth: ['get']}));
 
 app.use('/api/uploads', express.static('uploads'));
 app.use('/api/json', express.static('json'));

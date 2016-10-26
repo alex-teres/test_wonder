@@ -27,6 +27,7 @@ build/Release
 node_modules
 public/assets
 .idea
+uploads/music/*
 
 
 # Optional npm cache directory

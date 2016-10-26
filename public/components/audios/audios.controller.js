@@ -4,8 +4,26 @@ class AudiosCtrl{
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         this.Audios = Audios;
+        this.Auth = Auth;
+        this.localStorage = localStorage;
 
         $scope.audios = [];
+        if (localStorage.getItem('Authorization') == null) {
+            $scope.message = "If you want add some audio files firstly need Sign in/up";
+                      Audios.all().then(
+                    (res) => {
+                        if (res.data.length == 0) {
+                            $scope.audiosMessage = ". And seems like this resource doesn't have any music";
+                        }
+                        else {
+                             $scope.audios = res.data;
+                        }
+                    },
+                    (err) => {
+                        console.log('error on index.js ' + err);
+                    }
+                );
+        }
 
         $scope.$on('UserAuth', () => {
             Audios
@@ -13,7 +31,7 @@ class AudiosCtrl{
                 .then(
                     (res) => {
                         if (res.data.length == 0) {
-                            $scope.message = "You don't have any audios. Try to add one by pressing this button -->";
+                            $scope.message = "You don't have any audios. Try to add one by pressing green button.";
                         }
                         else {
                             $scope.audios = res.data;

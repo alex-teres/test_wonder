@@ -17,7 +17,7 @@ const NAME = 'home';
     }
     angular
         .module(NAME, [])
-        .controller('homeCtrl', ['$scope', 'User', 'Auth', 'Home', HomeCtrl])
+        .controller('homeCtrl', ['$scope', 'User', 'Auth', 'Home','$state', HomeCtrl])
         .directive('home', homeDirective)
         .service('Home', ['$state', Home])
         .config(function ($stateProvider) {

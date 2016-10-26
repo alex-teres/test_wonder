@@ -1,7 +1,9 @@
 class HomeCtrl{
-    constructor($scope, User, Auth, Home){
+    constructor($scope, User, Auth, Home,$state){
 
+        this.localStorage = localStorage;
         this.Home = Home;
+        this.$state = $state;
         User.me().then(
             function (res) {
                 $scope.user = res;

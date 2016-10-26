@@ -5,6 +5,15 @@ class addAudioCtrl{
         this.$scope = $scope;
         this.$compile = $compile;
         this.$element = $element;
+        this.$element.find('input[type="file"]').on('change',function (e) {
+            if(this.files.length == 0){
+                this.inputFile = false;
+                console.log('lal')
+            } else {
+                this.inputFile = true;
+                console.log('lol');
+            }
+        })
     }
 
 
